@@ -1,0 +1,129 @@
+#include<stdio.h>
+int queue[50],size;
+int front=-1;
+int rear=-1;
+void enqueue()
+{
+    int x;
+    printf("\nenter the value\n");
+    scanf("%d",&x);
+    if(rear==size-1)
+    {
+        printf("\nthe queue is full\n");
+    }
+    else if(front==-1 &&rear==-1)
+    {
+        front=rear=0;
+        queue[rear]=x;
+    }
+    else
+    {
+        rear++;
+        queue[rear]=x;
+    }
+}
+void dequeue()
+{
+    if(front==-1 && rear==-1)
+    {
+        printf("\nthe queue is empty\n");
+    }
+    else if (front==rear)
+    {
+        front=rear=-1;
+    }
+    else
+    {
+        front++;
+    }
+}
+void peek()
+{
+    if(front==-1 && rear==-1)
+    {
+        printf("\nqueue is empty\n");
+    }
+    else
+    {
+        printf("%d",queue[front]);
+    }
+}
+void  display()
+{
+    int i;
+    if(front==-1 && rear==-1)
+    {
+        printf("\nqueue is empty\n");
+    }
+    else
+    {
+        for(i=front;i<rear+1;i++)
+        {
+            printf("%d\t",queue[i]);
+        }
+    }
+}
+void isfull()
+{
+    if(rear==size-1)
+    {
+        printf("\nthe queue is full\n");
+    }
+    else
+    {
+        printf("\nthe queue is not full\n");
+    }
+
+}
+void isempty()
+{
+    if(front==-1 && rear==-1)
+    {
+        printf("\nqueue is empty\n");
+    }
+    else
+    {
+        printf("\nthe queue is not empty\n");
+    }
+}
+int main()
+{
+    int choice;
+    printf("\nenter the size of the queue\n");
+    scanf("%d",&size);
+    while(choice!=7)
+    {
+        printf("\nenter 1 to enqueue\nenter 2 to dequeue\nenter 3 to peek\nenter 4 to display\nenter 5 to isempty\nenter 6 to isfull\nenter 7 to quit");
+        printf("\nenter choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            enqueue();
+            break;
+            case 2:
+            dequeue();
+            break;
+            case 3:
+            peek();
+            break;
+            case 4:
+            display();
+            break;
+            case 5:
+            isempty();
+            break;
+            case 6:
+            isfull();
+            break;
+            case 7:
+            return choice=0;
+            break;
+            default:
+            printf("\nenter the valid choice\n");
+            break;
+        }
+        
+    }
+    
+}
