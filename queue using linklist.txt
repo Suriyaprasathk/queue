@@ -1,0 +1,123 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+struct node *front,*rear,*newnode,*temp;
+void enqueue()
+{
+    front=0;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter the data");
+    scanf("%d",&newnode->data);
+    newnode->next=0;
+    if(front==0)
+    {
+        front=rear=newnode;
+    }
+    else
+    {
+        rear->next=newnode;
+        rear=newnode;
+    }
+}
+void dequeue()
+{
+    struct node *temp;
+    if(front==0 && rear==0)
+    {
+        printf("queue is empty");
+    }
+    else
+    {
+        temp=front;
+        front=front->next;
+        free(temp);
+        
+    }
+}
+void peek()
+{
+    if(front==0 && rear==0)
+    {
+        printf("queue is empty");
+    }
+    else
+    {
+        printf("%d",front->data);
+    }
+}
+void display()
+{
+    
+    temp=front;
+    while(temp!=NULL)
+    {
+        printf("%d\t",temp->data);
+        temp=temp->next;
+    
+    }
+}
+void isempty()
+{
+    if(front==0 && rear==0)
+    {
+        printf("queue is empty");
+    }
+    else
+    {
+        printf("is not empty");
+    }
+}
+void isfull()
+{
+    if(front==0 && rear==0)
+    {
+        printf("queue is not full");
+    }
+    else
+    {
+        printf("is full");
+    }
+}
+
+int main()
+{
+    int choice;
+    while(choice!=7)
+    {
+        printf("\nenter 1 to enqueue\nenter 2 to dequeue\nenter 3 to peek\nenter 4 to display\nenter 5 to isempty\nenter 6 to isfull\nenter 7 to quit");
+        printf("\nenter choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            enqueue();
+            break;
+            case 2:
+            dequeue();
+            break;
+            case 3:
+            peek();
+            break;
+            case 4:
+            display();
+            break;
+            case 5:
+            isempty();
+            break;
+            case 6:
+            isfull();
+            break;
+            case 7:
+            return choice=0;
+            break;
+            default:
+            printf("\nenter the valid choice\n");
+            break;
+        }
+        
+    }
+    
+}
