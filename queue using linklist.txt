@@ -4,10 +4,9 @@ struct node{
     int data;
     struct node *next;
 };
-struct node *front,*rear,*newnode,*temp;
+struct node *front = NULL,*rear,*newnode,*temp;
 void enqueue()
 {
-    front=0;
     newnode=(struct node*)malloc(sizeof(struct node));
     printf("enter the data");
     scanf("%d",&newnode->data);
